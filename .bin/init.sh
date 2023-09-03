@@ -14,6 +14,9 @@ else
     exit 1
 fi
 
+# Install from .Brewfile
+brew bundle --global
+
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
@@ -29,7 +32,3 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
 
     ln -fnsv "$dotfile" "$HOME"
 done
-
-# Install from .Brewfile
-brew bundle --global
-

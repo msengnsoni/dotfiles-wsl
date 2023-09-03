@@ -99,14 +99,14 @@ ZSH_THEME="half-life"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-        # .zsh_historyから過去に実行したコマンドを検索し補完する
-        # 導入cmd git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-        zsh-autosuggestions
-        # コマンド入力中に、正常に入力されているか色分けする
-        # 導入cmd git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-        zsh-syntax-highlighting
-        git
-        brew
+	# .zsh_historyから過去に実行したコマンドを検索し補完する
+	# 導入cmd git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	zsh-autosuggestions
+	# コマンド入力中に、正常に入力されているか色分けする
+	# 導入cmd git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	zsh-syntax-highlighting
+	git
+	brew
 )
 
 source $ZSH/oh-my-zsh.sh
