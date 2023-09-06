@@ -32,3 +32,10 @@ for dotfile in "${SCRIPT_DIR}"/.??* ; do
 
     ln -fnsv "$dotfile" "$HOME"
 done
+
+# Create neovim synbolic link
+if [ ! -f "$HOME"/.config/nvim ]; then
+    mkdir "$HOME"/.config/nvim
+fi
+
+ln -fnsv "$HOME"/dotfiles-wsl/.bin/.init.vim "$HOME"/.config/nvim/init.vim
