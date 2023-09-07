@@ -3,25 +3,21 @@
 ############################################################
 # 日本語ファイル名を表示可能にする   
 setopt print_eight_bit
-
 # 直前のコマンドの重複を削除
 setopt hist_ignore_dups
-
 # 同じコマンドをヒストリに残さない
 setopt hist_ignore_all_dups
-
 # 同時に起動したzshの間でヒストリを共有
 setopt share_history
-
 # 補完候補を詰めて表示
 setopt list_packed
-
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 # 補完候補一覧をカラー表示
 autoload colors
 zstyle ':completion:*' list-colors ''
+# PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ############################################################
 # asdf

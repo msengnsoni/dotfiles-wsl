@@ -1,10 +1,11 @@
 if exists('g:vscode')
+
     " VSCode extension
     " vim basic settings
     set mouse=a
     " vi互換の無効
     set nocompatible
-    " shellの指定 
+    " shellの指定
     set shell=/bin/zsh
     " 画面表示関連
     set ruler
@@ -41,21 +42,54 @@ if exists('g:vscode')
     set hidden
     " クリップボードへの登録
     set clipboard=unnamed
+    set ruler
+    set showmode
+    set showcmd
+    set showmatch
+    set number
+    set laststatus=2
+    set virtualedit=onemore
+    set wrap
+    set linebreak
+    set cursorline
+    set wildmenu
+    " vim-plug
     call plug#begin()
     "Plug 'ntk148v/vim-horizon'
     "Plug 'preservim/nerdtree'
     "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     call plug#end()
-    
+
+    " THEME CHANGER
+    function! SetCursorLineNrColorInsert(mode)
+        " Insert mode: blue
+        if a:mode == "i"
+            call VSCodeNotify('nvim-theme.insert')
+
+        " Replace mode: red
+        elseif a:mode == "r"
+            call VSCodeNotify('nvim-theme.replace')
+        endif
+    endfunction
+
+    augroup CursorLineNrColorSwap
+        autocmd!
+        autocmd ModeChanged *:[vV\x16]* call VSCodeNotify('nvim-theme.visual')
+        autocmd ModeChanged *:[R]* call VSCodeNotify('nvim-theme.replace')
+        autocmd InsertEnter * call SetCursorLineNrColorInsert(v:insertmode)
+        autocmd InsertLeave * call VSCodeNotify('nvim-theme.normal')
+        autocmd CursorHold * call VSCodeNotify('nvim-theme.normal')
+    augroup END
+
 else
-    
+
     " ordinary Neovim
     " vim basic settings
     " vi互換の無効
     set nocompatible
     " ESCキーのキーマッピング
     inoremap jk <ESC>
-    " shellの指定 
+    " shellの指定
     set shell=/bin/zsh
     " 画面表示関連
     set ruler
@@ -106,7 +140,7 @@ else
     " lightline
     let g:lightline = {}
     let g:lightline.colorscheme = 'horizon'
-    
+
     let NERDTreeShowHidden=1
     " Start NERDTree when Vim is started without file arguments.
     autocmd StdinReadPre * let s:std_in=1
