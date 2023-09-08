@@ -43,7 +43,9 @@ ln -fnsv "$HOME"/dotfiles-wsl/.bin/.init.vim "$HOME"/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Install vim-comentary
-mkdir -p ~/.config/nvim/pack/tpope/start\ncd ~/.config/nvim/pack/tpope/start\ngit clone https://tpope.io/vim/commentary.git\nvim -u NONE -c "helptags commentary/doc" -c q
+mkdir -p ~/.config/nvim/pack/tpope/start
+git clone https://tpope.io/vim/commentary.git "$HOME"/.vim/pack/tpope/start
+vim -u NONE -c "helptags commentary/doc" -c q
 
 # Install node
 nvm install node
