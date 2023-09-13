@@ -1,4 +1,7 @@
 " vim basic settings
+" escape noremap
+inoremap <silent> jk <ESC>
+" マウスオーバー
 set mouse=a
 " vi互換の無効
 set nocompatible

@@ -20,6 +20,12 @@ zstyle ':completion:*' list-colors ''
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ############################################################
+# kubectl
+############################################################
+source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc # add autocomplete permanently to your zsh shell
+
+############################################################
 # asdf
 ############################################################
 # Set for asdf
@@ -157,3 +163,6 @@ alias lst="ls -ltrh"
 alias vi="nvim"
 alias vim="nvim"
 alias view="nvim -R"
+alias k="kubectl"
+
+[[ $commands[kubectl] ]] && source <(kubectl completion zsh)
