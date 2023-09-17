@@ -1,48 +1,3 @@
-#############################################################
-# zsh_basic
-############################################################
-# 日本語ファイル名を表示可能にする   
-setopt print_eight_bit
-# 直前のコマンドの重複を削除
-setopt hist_ignore_dups
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-# 同時に起動したzshの間でヒストリを共有
-setopt share_history
-# 補完候補を詰めて表示
-setopt list_packed
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# 補完候補一覧をカラー表示
-autoload colors
-zstyle ':completion:*' list-colors ''
-# PATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-
-############################################################
-# kubectl
-############################################################
-source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
-echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc # add autocomplete permanently to your zsh shell
-
-############################################################
-# asdf
-############################################################
-# Set for asdf
-. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
-
-############################################################
-# gh
-############################################################
-eval "$(gh completion -s zsh)"
-
-############################################################
-# nvm
-############################################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 ###########################################################
 # oh-my-zsh
 ############################################################
@@ -165,4 +120,46 @@ alias vim="nvim"
 alias view="nvim -R"
 alias k="kubectl"
 
+#############################################################
+# zsh_basic
+############################################################
+# 日本語ファイル名を表示可能にする   
+setopt print_eight_bit
+# 直前のコマンドの重複を削除
+setopt hist_ignore_dups
+# 同じコマンドをヒストリに残さない
+setopt hist_ignore_all_dups
+# 同時に起動したzshの間でヒストリを共有
+setopt share_history
+# 補完候補を詰めて表示
+setopt list_packed
+# 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# 補完候補一覧をカラー表示
+autoload colors
+zstyle ':completion:*' list-colors ''
+# PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+############################################################
+# asdf
+############################################################
+# Set for asdf
+. /home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh
+
+############################################################
+# kubectl
+############################################################
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
+
+############################################################
+# gh
+############################################################
+eval "$(gh completion -s zsh)"
+
+############################################################
+# nvm
+############################################################
+export NVM_DIR="$HOME/.nvm"
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/home/linuxbrew/.linuxbrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
