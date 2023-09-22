@@ -178,4 +178,3 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 ssh-add $HOME/.ssh/id_rsa
-test
