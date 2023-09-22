@@ -167,6 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 ############################################################
 # ssh-agent
 ############################################################
+eval `ssh-agent`
 if [ -z "$SSH_AUTH_SOCK" ]; then
    # Check for a currently running instance of the agent
    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
