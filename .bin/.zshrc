@@ -167,7 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 ############################################################
 # ssh-agent
 ############################################################
-eval `ssh-agent`
+eval `ssh-agent` > /dev/null
 if [ -z "$SSH_AUTH_SOCK" ]; then
    # Check for a currently running instance of the agent
    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
@@ -177,5 +177,4 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    fi
    eval `cat $HOME/.ssh/ssh-agent`
 fi
-
-ssh-add $HOME/.ssh/id_rsa
+ssh-add $HOME/.ssh/id_rsa > /dev/null
