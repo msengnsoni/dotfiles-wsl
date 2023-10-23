@@ -10,3 +10,4 @@ git clone https://github.com/msengnsoni/dotfiles-wsl.git
 cd dotfiles-wsl
 source .bin/init.sh
 ```
+test
