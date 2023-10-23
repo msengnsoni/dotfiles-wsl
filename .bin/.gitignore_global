@@ -1,0 +1,10 @@
+*~
+\#*\#
+*.swp
+tmp/*
+private/**/*
+public/cache
+.DS_Store
+.#*
+.vscode
+.devcontainer
