@@ -136,10 +136,24 @@ setopt list_packed
 # 補完で小文字でも大文字にマッチさせる
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # 補完候補一覧をカラー表示
-autoload colors
-zstyle ':completion:*' list-colors ''
+#autoload colors
+#zstyle ':completion:*' list-colors ''
 # PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+# 色の設定
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxbxegedabagacad
+export LS_COLORS='di=36:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*' list-colors 'di=36' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+# History設定
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+############################################################
+# tmux
+############################################################
+[[ -z "$TMUX" && ! -z "$PS1" ]] && tmux
 
 ############################################################
 # asdf
