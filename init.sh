@@ -8,21 +8,22 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
     if [ ! -f /home/linuxbrew/.linuxbrew ]; then
         # Install brew
         echo "Install brew WSL"
-        sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-        # Set zsh
-        sudo apt install zsh
-        csh -s "$(which zsh)"
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
         # Install from .Brewfile
         brew bundle --global
-   fi
+    fi
 else
     exit 1
 fi
 
 # Install oh-my-zsh
-if [ ! -f "$HOME"/.oh-my-zsh ]; then
+if [ ! -f "$HOME"/.zshrc ]; then
+    # Install zsh
+    sudo apt -y install zsh
+    chsh -s "$(which zsh)"
+
+    # Install oh-my-zsh
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
@@ -38,7 +39,7 @@ for dotfile in "${SCRIPT_DIR}"/.bin/.??* ; do
 done
 
 # Check nvim 
-if [ ! -f "$HOME"/.config/nvim ]; then
+if [ ! -d "$HOME"/.config/nvim ]; then
     # Create neovim synbolic link
     mkdir "$HOME"/.config/nvim
     ln -fnsv "$SCRIPT_DIR"/.bin/.init.vim "$HOME"/.config/nvim/init.vim
@@ -53,7 +54,7 @@ if [ ! -f "$HOME"/.config/nvim ]; then
 fi
 
 # Install node
-if [ ! -f "$HOME"/.nvm ]; then
+if [ ! -d "$HOME"/.nvm ]; then
     nvm install node
     mkdir "$HOME"/.nvm
 fi
