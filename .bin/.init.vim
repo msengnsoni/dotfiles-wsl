@@ -27,8 +27,8 @@ set ignorecase
 " タブ/インデント関連
 set autoindent
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 " 文字コード関連
 set fenc=utf-8
 set enc=utf-8

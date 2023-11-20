@@ -111,8 +111,8 @@ export LANG=ja_JP.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ll="ls -alh"
-alias ls="ls -h"
+alias ls="ls -h --color"
+alias ll="ls -al"
 alias la="ls -ah"
 alias lst="ls -ltrh"
 alias vi="nvim"
