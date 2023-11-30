@@ -67,3 +67,6 @@ if [ ! -f /lib/systemd/system/docker.service ]; then
   sudo sh get-docker.sh
   rm get-docker.sh
 fi
+
+# Install ja_JP language pack
+sudo apt-get -y install language-pack-ja

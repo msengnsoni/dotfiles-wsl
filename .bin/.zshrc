@@ -82,7 +82,12 @@ plugins=(
 	zsh-syntax-highlighting
 	git
 	brew
+  terraform
 )
+
+# Setting for zsh-completions
+# 導入cmd git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=ja_JP.UTF-8
+export LC_ALL=ja_JP.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
