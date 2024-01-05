@@ -18,7 +18,7 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
 
     # Install from .Brewfile
     echo_str "from .Brewfile"
-    brew bundle --global
+    brew bundle --global --file "${SCRIPT_DIR}/.bin/.Brewfile"
   fi
 else
   exit 1
