@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# function 'echo'
+# function 'echo_str'
 function echo_str () {
   echo "---------------- Install $1 ---------------"
 }
@@ -24,21 +24,6 @@ else
   exit 1
 fi
 
-# Install zsh
-if [ ! -f "$HOME"/.zshrc ]; then
-  echo_str "zsh"
-  sudo apt -y install zsh
-  chsh -s "$(which zsh)"
-fi
-  
-# Install oh-my-zsh
-if [ ! -f "$HOME"/.oh-my-zsh ]; then
-  echo_str "oh-my-zsh"
-  sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
-fi
-
 # Create synbolic link
 for dotfile in "${SCRIPT_DIR}"/.bin/.??* ; do
   [[ "$dotfile" == "${SCRIPT_DIR}/.git" ]] && continue
@@ -47,6 +32,13 @@ for dotfile in "${SCRIPT_DIR}"/.bin/.??* ; do
   [[ "$dotfile" == "${SCRIPT_DIR}/.bin/.init.vim" ]] && continue
   ln -fnsv "$dotfile" "$HOME"
 done
+
+# Install zsh
+if [ ! -f "$HOME"/.zshrc ]; then
+  echo_str "zsh"
+  sudo apt -y install zsh
+  chsh -s "$(which zsh)"
+fi
 
 # Check nvim 
 if [ ! -d "$HOME"/.config/nvim ]; then
@@ -85,4 +77,3 @@ if [ ! -d /sur/share/doc/language-pack-ja ]; then
   echo_str "ja_JP language pack"
   sudo apt-get -y install language-pack-ja
 fi
-
